@@ -1,0 +1,13 @@
+USE EMPLOYEE;
+
+
+CREATE TABLE 
+       EMPLOYEE_MASTER 
+       AS
+           (SELECT *fROM EMPLOYEE);
+           
+
+DELETE 
+   FROM 
+      EMPLOYEE_MASTER 
+			WHERE DEPTNO = 10;
