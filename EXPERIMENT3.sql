@@ -1,26 +1,93 @@
+-- Use Database
 USE EMPLOYEE;
-SELECT ENAME, JOB, SAL FROM EMPLOYEE WHERE DEPTNO=30  ORDER BY SAL DESC;
 
-SELECT * FROM EMPLOYEE WHERE ENAME LIKE 'A_L_N';
+---------------------------------------------------
+-- 1. List all employees and jobs in Department 30
+--    in descending order by salary
+---------------------------------------------------
+SELECT ENAME, JOB, SAL
+FROM EMPLOYEE
+WHERE DEPTNO = 30
+ORDER BY SAL DESC;
 
-SELECT * FROM EMPLOYEE WHERE ENAME LIKE 'S%';
+---------------------------------------------------
+-- 2. List job and department number of employees
+--    whose names are five letters long,
+--    begin with 'A' and end with 'N'
+---------------------------------------------------
+SELECT JOB, DEPTNO
+FROM EMPLOYEE
+WHERE ENAME LIKE 'A___N';
 
-SELECT * FROM EMPLOYEE WHERE ENAME LIKE '%S';
+---------------------------------------------------
+-- 3. Display names of employees whose names
+--    start with alphabet S
+---------------------------------------------------
+SELECT ENAME
+FROM EMPLOYEE
+WHERE ENAME LIKE 'S%';
 
-SELECT ENAME FROM EMPLOYEE WHERE JOB IN('CLERK', 'SALESMAN', 'ANALYST') OR DEPTNO IN(10,20,40);
+---------------------------------------------------
+-- 4. Display names of employees whose names
+--    end with alphabet S
+---------------------------------------------------
+SELECT ENAME
+FROM EMPLOYEE
+WHERE ENAME LIKE '%S';
 
-SELECT EMPNO, ENAME, COMM FROM EMPLOYEE WHERE COMM IS NOT NULL AND COMM > 0;
+---------------------------------------------------
+-- 5. Display names of employees working in
+--    department 10, 20 or 40 OR employees
+--    working as clerk, salesman or analyst
+---------------------------------------------------
+SELECT ENAME
+FROM EMPLOYEE
+WHERE DEPTNO IN (10,20,40)
+OR JOB IN ('CLERK','SALESMAN','ANALYST');
 
-SELECT EMPNO, ENAME, (SAL + IFNULL(COMM, 0)) AS TOTAL_SAL 
+---------------------------------------------------
+-- 6. Display employee number and names
+--    for employees who earn commission
+---------------------------------------------------
+SELECT EMPNO, ENAME
+FROM EMPLOYEE
+WHERE COMM IS NOT NULL
+AND COMM > 0;
+
+---------------------------------------------------
+-- 7. Display employee number and total salary
+--    for each employee
+---------------------------------------------------
+SELECT EMPNO,
+       SAL + IFNULL(COMM,0) AS TOTAL_SALARY
 FROM EMPLOYEE;
 
-SELECT EMPNO, ENAME, SAL,SAL*12 AS ANNUAL_SALARY FROM EMPLOYEE;
+---------------------------------------------------
+-- 8. Display employee number and annual salary
+--    for each employee
+---------------------------------------------------
+SELECT EMPNO,
+       SAL * 12 AS ANNUAL_SALARY
+FROM EMPLOYEE;
 
+---------------------------------------------------
+-- 9. Display names of all employees working
+--    as clerks and drawing salary more than 3000
+---------------------------------------------------
+SELECT ENAME
+FROM EMPLOYEE
+WHERE JOB = 'CLERK'
+AND SAL > 3000;
 
-SELECT * FROM EMPLOYEE WHERE JOB = 'CLERK' AND SAL > 3000;
-
-
-SELECT * FROM EMPLOYEE WHERE JOB IN('CLERK', 'SALESMAN', 'ANALYST') AND SAL > 3000;
+---------------------------------------------------
+-- 10. Display names of employees working as
+--     clerk, salesman or analyst and drawing
+--     salary more than 3000
+---------------------------------------------------
+SELECT ENAME
+FROM EMPLOYEE
+WHERE JOB IN ('CLERK','SALESMAN','ANALYST')
+AND SAL > 3000;
 
 
 
