@@ -9,3 +9,10 @@ CREATE TABLE
 	);
 SHOW TABLES;
 
+-- Insert Department Records
+INSERT INTO 
+       DEPARTMENT VALUES
+                  (10, "RESEARCH"),
+                  (20, "ACCOUNTING"),
+                  (30, "SALES"),
+                  (40, "OPERATIONS");
